@@ -1,0 +1,124 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb,verbatim, amsthm, graphicx}
+
+%exercise environment
+\newcounter{exercise}
+\setcounter{exercise}{0}
+\newenvironment{exercise}{\addtocounter{exercise}{1} \noindent{\bf{Exercise \theexercise.}}}{\vspace{.5cm}}
+
+\newcommand{\p}{\mathcal{P}}
+\newcommand{\hide}[1]{}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\B}[0]{\mathbb{B^*}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\Ps}[0]{\mathbb{P}}\newcommand{\myf}[3]{{#1}\text{: }{#2} \to {#3}}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\QED}{\hfill $\Box$}
+\renewcommand{\empty}{\varnothing}
+\newcommand{\mat}[4]{\left( \begin{array}{cc} #1 & #2 \\ #3 & #4  \end{array} \right)}
+
+\textwidth 6.5in
+\textheight 9in
+\oddsidemargin 0in
+\evensidemargin 0in
+\headsep -0.5in
+
+\setlength{\parskip}{0.25cm}
+
+\pagenumbering{gobble}
+
+\begin{document}
+
+
+\noindent{\Large{\textsc{Modern Algebra \hfill Assignment $2$  \\ Spring 2019 \hfill Kenny Mclaren}}}
+
+\large
+
+\vspace{1cm}
+
+
+\begin{exercise}
+Construct multiplication tables for the groups $\Z_7^{\times}$, $\Z_9^{\times}$ and $\Z_{15}^{\times}$.
+\end{exercise}
+\\
+\begin{tabular}{c|ccccccc}
+$\Z_7^{\times}$  & 1 & 2 & 3 & 4 & 5 & 6\\\hline
+1 & 1 & 2 & 3 & 4 & 5 & 6\\
+2 & 2 & 4 & 6 & 1 & 3 & 5\\
+3 & 3 & 6 & 2 & 5 & 1 & 4\\
+4 & 4 & 1 & 5 & 2 & 6 & 3\\
+5 & 5 & 3 & 1 & 6 & 4 & 2\\
+6 & 6 & 5 & 4 & 3 & 2 & 1
+\end{tabular}
+\quad
+\begin{tabular}{c|cccccc}
+
+$\Z_9^{\times}$ & 1 & 2 & 4 & 5 & 7 & 8\\
+\hline
+1 & 1 & 2 & 4 & 5 & 7 & 8\\
+2 & 2 & 4 & 8 & 1 & 5 & 7\\
+4 & 4 & 8 & 7 & 2 & 1 & 5\\
+5 & 5 & 1 & 2 & 7 & 8 & 4\\
+7 & 7 & 5 & 1 & 8 & 4 & 2\\
+8 & 8 & 7 & 5 & 4 & 2 & 1\\
+\end{tabular}
+\quad
+\begin{tabular}{c|cccccccc}
+$\Z_{15}^{\times}$ & 1 & 2 & 4 & 7 & 8 & 11 & 13 & 14 \\
+\hline
+1 & 1 & 2 & 4 & 7 & 8 & 11 & 13 & 14\\ 
+2 & 2 & 4 & 8 & 14 & 1 & 7 & 11 & 13\\
+4 & 4 & 8 & 1 & 13 & 2 & 14 & 7 & 11\\
+7 & 7 & 14 & 13 & 4 & 11 & 2 & 1 & 8\\
+8 & 8 & 1 & 2 & 11 & 4 & 13 & 14 & 7\\
+11 & 11 & 7 & 14 & 2 & 13 & 1 & 8 & 4\\
+13 & 13 & 11 & 7 & 1 & 14 & 8 & 4 & 2\\
+14 & 14 & 13 & 11 & 8 & 7 & 4 & 2 & 1
+\end{tabular}
+\begin{exercise}
+Construct a multiplication table for the dihedral group $D_4$.
+\end{exercise}
+
+\begin{tabular}{c|cccccccc}
+$D_4$ & $R_0$ & $R_1$ & $R_2$ & $R_3$ & $FR_0$ & $FR_1$ & $FR_2$ & $FR_3$ \\
+\hline
+$R_0$ & $R_0$ & $R_1$ & $R_2$ & $R_3$ & $FR_0$ & $FR_1$ & $FR_2$ & $FR_3$\\ 
+$R_1$ &$ R_1$ & $R_2$ & $R_3$ & $R_0$ & $FR_1$ & $FR_2$ & $FR_3$ & $FR_4$\\
+$R_2$ & $R_2$ & $R_3$ & $R_0$ & $R_1$ & $FR_2$ & $FR_3$ & $FR_0$ & $FR_1$\\
+$R_3$ & $R_3$ & $R_0$ & $R_1$ & $R_2$ & $FR_3$ & $FR_0$ & $FR_1$ & $FR_2$\\
+$FR_0$ & $FR_0$ & $FR_1$ & $FR_2$ & $FR_3$ & $R_0$ & $R_3$ & $R_2$ & $R_1$\\
+$FR_1$ & 
+$FR_2$ & 
+$FR_3$ & 
+\end{tabular}
+
+\begin{exercise}
+Prove that if $G$ is a group in which every element is its own inverse, then $G$ is abelian.  
+\end{exercise}
+
+\begin{proof}[Solution.]
+Pick $a,b\in G$. We know that $aa=e$ and $bb=e$, so
+\[
+
+\]
+\end{proof}
+
+\begin{exercise}
+Lang, II.1.3.
+\end{exercise}
+
+\begin{proof}[Solution.]
+The power set of the empty set,
+\[
+\p(\empty) = \{ \empty \},
+\]
+works.
+\end{proof}
+
+
+\end{document}

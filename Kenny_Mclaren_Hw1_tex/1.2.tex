@@ -1,0 +1,242 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb,verbatim, amsthm, graphicx}
+%exercise environment
+\newcounter{exercise}
+\setcounter{exercise}{0}
+\newenvironment{exercise}{\addtocounter{exercise}{1} \noindent{\bf{Exercise \theexercise.}}}{\vspace{.5cm}}
+
+\newcommand{\p}{\mathcal{P}}
+\newcommand{\hide}[1]{}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\B}[0]{\mathbb{B^*}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\Ps}[0]{\mathbb{P}}\newcommand{\myf}[3]{{#1}\text{: }{#2} \to {#3}}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\QED}{\hfill $\Box$}
+\renewcommand{\empty}{\varnothing}
+\newcommand{\mat}[4]{\left( \begin{array}{cc} #1 & #2 \\ #3 & #4  \end{array} \right)}
+
+\textwidth 6.5in
+\textheight 9in
+\oddsidemargin 0in
+\evensidemargin 0in
+\headsep -0.5in
+
+\setlength{\parskip}{0.25cm}
+
+\pagenumbering{gobble}
+
+\begin{document}
+
+
+\noindent{\Large{\textsc{Modern Algebra \hfill Assignment $1$  \\ Spring 2019 \hfill Kenny Mclaren}}}
+
+\large
+
+\vspace{1cm}
+
+
+\begin{exercise}
+Use induction to prove that for any $n \in \N$,
+\[
+\sum_{j=1}^n j^2 = \frac{n(n+1)(2n+1)}{6}.
+\]
+\end{exercise}
+
+
+\begin{proof}[Solution.]
+Let $P(n)$ be the statement that 
+\[
+\sum_{j=1}^n j^2 = \frac{n(n+1)(2n+1)}{6}.
+\]
+$P(1)$ is true because when $n=1$, 
+\[
+\sum_{j=1}^1 j^2 = 1 = \frac{1(1+1)(2(1)+1)}{6}.
+\]
+Suppose $P(k)$ is true. Then
+\[
+\begin{split}
+\sum_{j=1}^k j^2 &= \frac{k(k+1)(2k+1)}{6}, \text{ so}\\
+\sum_{j=1}^{k+1} j^2=\sum_{j=1}^k j^2 +(k+1)^2 &= \frac{k(k+1)(2k+1)}{6} +(k+1)^2\\
+        &= \frac{(k+1)(k(2k+1)+6k+6)}{6}\\
+        &= \frac{(k+1)(2k^2+7k+6)}{6}\\
+        &= \frac{(k+1)(k+2)(2(k+1)+1)}{6}, \text{ so}\\
+\end{split}
+\]
+$P(k+1)$ is true. Thus $P(n)$ is true $\forall n\in\N$
+\end{proof}
+
+
+\begin{exercise}
+Given $n \in \N$ and $m \in \Z$, let $R(m)$ denote the remainder when $m$ is divided by $n$.  Prove that for all $a, b, c \in \Z$,
+\[
+R(a + R(b + c)) = R(R(a + b) + c) \,\,\, \text{ and } \,\,\, R(a R(bc)) = R(R(ab)c)
+\]
+\end{exercise}
+
+\begin{proof}[Solution.]
+Let $a,b,c\in\Z$ and $n\in\N$ be given. For any $d,e\in\Z$, $R(d)=R(d+ne)$, because adding or subtracting a multiple of $n$ to a number will not change the remainder when dividing by $n$. 
+By the division algorithm, we know that $b+c=nq_1+r_1$, and $a+b=nq_2+r_2$ where $q_1, q_2\in \N$ and $r_1, r_2\in\set{0,1,2,\dots, n-1}$. Then, $R(b+c)=r_1$ and $R(a+b)=r_2$. Now,
+\[
+\begin{split}
+R(a + R(b + c))&= R(a+ r_1)\\
+    &= R(a+r_1+nq_1)\\
+    &= R(a+b+c)\\
+    &= R(nq_2+r_2 + c)\\
+    &= R(r_2 + c)\\
+    &= R(R(a+b)+c)
+\end{split}
+\]
+Similarly, by the division algorithm, we know that $bc=nq_3+r_3$, and $ab=nq_4+r_4$ where $q_3, q_4\in \N$ and $r_3, r_4\in\set{0,1,2,\dots, n-1}$. Then, $R(bc)=r_3$ and $R(ab)=r_4$. Now,
+\[
+\begin{split}
+R(a  R(b  c))&= R(a r_3)\\
+    &= R(ar_3+anq_3)\\
+    &= R(abc)\\
+    &= R((nq_4+r_4)c)\\
+    &= R(r_4  c)\\
+    &= R(R(ab)c)
+\end{split}
+\]
+\end{proof}
+
+
+\begin{exercise}
+Let
+\[
+G = \left\{ \pm \mat{1}{0}{0}{1}, \pm \mat{i}{0}{0}{-i}, \pm \mat{0}{-1}{1}{0} ,\pm \mat{0}{i}{i}{0} \right\}.
+\]
+\begin{itemize}
+
+\item[\bf a.]  Show that $G$ is closed under matrix multiplication.  
+
+\item[\bf b.]  Prove that $G$ is a group under matrix multiplication.  Is it abelian?
+
+\end{itemize}
+\end{exercise}
+
+\begin{proof}[Solution.]
+Let $A=\set{\textbf{M}=\mat{a}{0}{0}{b}|a,b\in\set{\pm1,\pm i}, \text{det}(\textbf{M})=1}$ and\\
+$B=\set{\textbf{M}=\mat{0}{a}{b}{0}|a,b\in\set{\pm1,\pm i}, \text{det}(\textbf{M})=1} $.  Then, $A=\set{\pm \mat{1}{0}{0}{1}, \pm \mat{i}{0}{0}{-i}}$ and\\
+$B=\set{\pm \mat{0}{-1}{1}{0} ,\pm \mat{0}{i}{i}{0}}$, so $A\cup B= G$. The set $\set{\pm1,\pm i}$ is closed under multiplication because 
+\begin{center}
+\begin{tabular}{c c c c c}
+$1*1=1 $&$1*-1=-1 $&$1*i=i $&$1*-i=-i $&$-1*-1=1$\\
+$-1*i=-i$&$-1-i=1$&$i*i=-1$&$i*-i=1$&$-i*-i=-1$
+\end{tabular}
+\end{center}
+Now, pick $\textbf{C},\textbf{D}\in G$. Then det($\textbf{C}\textbf{D}$)=det($\textbf{C}$)det($\textbf{D}$)=1. Further, either (i) $\textbf{C},\textbf{D}\in A$ (ii) $\textbf{C}\in A$, $\textbf{D}\in B$ (iii) $\textbf{D}\in A$, $\textbf{C}\in B$, or (iv) $\textbf{C},\textbf{D}\in B$. \\
+    \indent If (i) $\textbf{C}=\mat{a}{0}{0}{b}$ and $\textbf{D}=\mat{c}{0}{0}{d}$ for some $a,b,c,d\in \set{\pm1,\pm i}$, so $\textbf{C}\textbf{D}=\mat{ac}{0}{0}{bd}\in A\subset G$ because $ac,bd \in \set{\pm1,\pm i}$ \\
+    
+    \indent If (ii) $\textbf{C}=\mat{a}{0}{0}{b}$ and $\textbf{D}=\mat{0}{c}{d}{0}$ for some $a,b,c,d\in \set{\pm1,\pm i}$, so $\textbf{C}\textbf{D}=\mat{0}{ac}{bd}{0}\in B\subset G$ because $ac,bd \in \set{\pm1,\pm i}$\\
+    
+    \indent If (iii) $\textbf{C}=\mat{0}{a}{b}{0}$ and $\textbf{D}=\mat{c}{0}{0}{d}$ for some $a,b,c,d\in \set{\pm1,\pm i}$, so $\textbf{C}\textbf{D}=\mat{0}{ad}{bc}{0}\in B\subset G$ because $ad,bc \in \set{\pm1,\pm i}$\\
+    
+    \indent If (iv) $\textbf{C}=\mat{0}{a}{b}{0}$ and $\textbf{D}=\mat{0}{c}{d}{0}$ for some $a,b,c,d\in \set{\pm1,\pm i}$, so $\textbf{C}\textbf{D}=\mat{ad}{0}{0}{bc}\in A\subset G$ because $ad,bc\in \set{\pm1,\pm i}$.
+    
+Thus $G$ is closed under matrix multiplication.
+
+Matrix multiplication is associative. For any matrix $\textbf{M}, \textbf{I}\textbf{M}=\textbf{M}\textbf{I}=\textbf{M}$ and $\textbf{I}\in G$. For every matrix $\textbf{N}\in G$, $\textbf{N}^4=\textbf{I}$ because
+\[
+\begin{split}
+\pm\mat{1}{0}{0}{1}^4=\textbf{I}^2=\textbf{I}, \\
+\pm \mat{i}{0}{0}{-i}^4=(-\textbf{I})^2=\textbf{I}, \\
+\pm \mat{0}{-1}{1}{0}^4=(-\textbf{I})^2=\textbf{I} ,\\
+\pm \mat{0}{i}{i}{0}^4=(-\textbf{I})^2=\textbf{I}.
+\end{split}
+\]
+Now, $\textbf{M}^3 \textbf{M}=\textbf{M}\textbf{M}^3=\textbf{M}^4=\textbf{I}$ and $\textbf{M}^3\in G$ because $G$ is closed under matrix multiplication. Thus, $G$ is a group under matrix multiplication.
+
+$G$ is not abelian because
+\[
+\mat{i}{0}{0}{-i} \mat{0}{-1}{1}{0}=\mat{0}{-i}{-i}{0}, \text{but}  \mat{0}{-1}{1}{0}\mat{i}{0}{0}{-i} =\mat{0}{i}{i}{0}.
+\]
+\end{proof}
+
+\begin{exercise}
+Let $G$ be a group and $a,b,c \in G$.  Prove the following {\em cancellation laws}.
+
+\begin{itemize}
+
+\item[\bf a.]  If $ab = ac$, then $b = c$ ({\em left cancellation}).
+
+\item[\bf b.]  If $ab = cb$, then $a = c$ ({\em right cancellation}).
+
+\end{itemize}
+
+\end{exercise}
+
+\begin{proof}[Solution.]
+Because $G$ is a group, there exist two sided inverses of $a$ and $b$, $a^{-1}$ and $b^{-1}$. Then if $ab = ac$,
+\[
+\begin{split}
+    a^{-1}ab &=  a^{-1}ac\\
+    eb &= ec\\
+    b&=c
+\end{split}
+\]
+Similarly, if $ab = cb$, then
+\[
+\begin{split}
+    abb^{-1} &=  cbb^{-1}\\
+    ae &= ce\\
+    a&=c
+\end{split}
+\]
+
+\end{proof}
+
+\begin{exercise}
+Let $G$ be a group and $e_0 \in G$.  Given $x, y \in G$, define a new binary operation $\ast$ on $G$ by 
+\[
+x \ast y = x e_0^{-1} y.
+\]  
+Prove that $G$ is a group under $\ast$.
+\end{exercise}
+
+\begin{proof}[Solution.]
+Pick $a,b,c\in G$. Then, $\ast$ is associative because 
+\[
+\begin{split}
+   (a\ast b)\ast c &= (a e_0^{-1} b)e_0^{-1}c\\
+        &=a e_0^{-1}( be_0^{-1}c)\\
+        &= a\ast (b\ast c)
+\end{split}
+\]
+Further, $e_0$ is a two sided identity because
+\[
+\begin{split}
+   a\ast e_o&= a e_0^{-1} e_0\\
+        &=a e\\
+        &= a \text{, \ and}\\
+     e_o\ast a&= e_0 e_0^{-1} a\\
+        &=ea\\
+        &= a
+\end{split}
+\]
+Finally, every element of $G$ has a two sided inverse because
+\[
+\begin{split}
+   a\ast e_0 a^{-1}e_0&= a e_0^{-1} e_0 a^{-1}e_0\\
+        &=a e a^{-1}e_0\\
+        &=a a^{-1}e_0\\
+        &=e e_0\\
+        &= e_0 \text{, \ and}\\
+     e_0 a^{-1}e_0\ast a&= e_0a^{-1}e_0 e_0^{-1} a\\
+        &=e_0a^{-1}e a\\
+        &=e_0a^{-1} a\\
+        &=e_0e\\
+        &= e_0
+\end{split}
+\]
+So $e_0 a^{-1}e_0$ is the inverse of $a$. Thus, $G$ is a group under $\ast$.
+\end{proof}
+
+\end{document}
+
+

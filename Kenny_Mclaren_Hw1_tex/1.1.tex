@@ -1,0 +1,108 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb,verbatim, amsthm, graphicx}
+
+%exercise environment
+\newcounter{exercise}
+\setcounter{exercise}{0}
+\newenvironment{exercise}{\addtocounter{exercise}{1} \noindent{\bf{Exercise \theexercise.}}}{\vspace{.5cm}}
+
+\newcommand{\p}{\mathcal{P}}
+\newcommand{\hide}[1]{}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\B}[0]{\mathbb{B^*}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\Ps}[0]{\mathbb{P}}\newcommand{\myf}[3]{{#1}\text{: }{#2} \to {#3}}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\QED}{\hfill $\Box$}
+\renewcommand{\empty}{\varnothing}
+
+\textwidth 6.5in
+\textheight 9in
+\oddsidemargin 0in
+\evensidemargin 0in
+\headsep -0.5in
+
+\setlength{\parskip}{0.25cm}
+
+\pagenumbering{gobble}
+
+\begin{document}
+
+
+\noindent{\Large{\textsc{Modern Algebra \hfill Assignment $1.1$  \\ Spring 2019 \hfill Kenny Mclaren}}}
+
+\large
+
+\vspace{1cm}
+
+\begin{exercise}
+Use induction to prove that for any $n \in \N$,
+\[
+\sum_{j=1}^n j^2 = \frac{n(n+1)(2n+1)}{6}.
+\]
+\end{exercise}
+
+
+\begin{proof}[Solution.]
+Let $P(n)$ be the statement that 
+\[
+\sum_{j=1}^n j^2 = \frac{n(n+1)(2n+1)}{6}.
+\]
+$P(1)$ is true because when $n=1$, 
+\[
+\sum_{j=1}^1 j^2 = 1 = \frac{1(1+1)(2(1)+1)}{6}.
+\]
+Suppose $P(k)$ is true. Then
+\[
+\begin{split}
+\sum_{j=1}^k j^2 &= \frac{k(k+1)(2k+1)}{6}, \text{ so}\\
+\sum_{j=1}^{k+1} j^2=\sum_{j=1}^k j^2 +(k+1)^2 &= \frac{k(k+1)(2k+1)}{6} +(k+1)^2\\
+        &= \frac{(k+1)(k(2k+1)+6k+6)}{6}\\
+        &= \frac{(k+1)(2k^2+7k+6)}{6}\\
+        &= \frac{(k+1)(k+2)(2(k+1)+1)}{6}, \text{ so}\\
+\end{split}
+\]
+$P(k+1)$ is true. Thus $P(n)$ is true $\forall n\in\N$
+\end{proof}
+
+
+\begin{exercise}
+Given $n \in \N$ and $m \in \Z$, let $R(m)$ denote the remainder when $m$ is divided by $n$.  Prove that for all $a, b, c \in \Z$,
+\[
+R(a + R(b + c)) = R(R(a + b) + c) \,\,\, \text{ and } \,\,\, R(a R(bc)) = R(R(ab)c)
+\]
+\end{exercise}
+
+\begin{proof}[Solution.]
+Let $a,b,c\in\Z$ and $n\in\N$ be given. For any $d,e\in\Z$, $R(d)=R(d+ne)$, because adding or subtracting a multiple of $n$ to a number will not change the remainder when dividing by $n$. 
+By the division algorithm, we know that $b+c=nq_1+r_1$, and $a+b=nq_2+r_2$ where $q_1, q_2\in \N$ and $r_1, r_2\in\set{0,1,2,\dots, n-1}$. Then, $R(b+c)=r_1$ and $R(a+b)=r_2$. Now,
+\[
+\begin{split}
+R(a + R(b + c))&= R(a+ r_1)\\
+    &= R(a+r_1+nq_1)\\
+    &= R(a+b+c)\\
+    &= R(nq_2+r_2 + c)\\
+    &= R(r_2 + c)\\
+    &= R(R(a+b)+c)
+\end{split}
+\]
+Similarly, by the division algorithm, we know that $bc=nq_3+r_3$, and $ab=nq_4+r_4$ where $q_3, q_4\in \N$ and $r_3, r_4\in\set{0,1,2,\dots, n-1}$. Then, $R(bc)=r_3$ and $R(ab)=r_4$. Now,
+\[
+\begin{split}
+R(a  R(b  c))&= R(a r_3)\\
+    &= R(ar_3+anq_3)\\
+    &= R(abc)\\
+    &= R((nq_4+r_4)c)\\
+    &= R(r_4  c)\\
+    &= R(R(ab)c)
+\end{split}
+\]
+\end{proof}
+
+
+\end{document}

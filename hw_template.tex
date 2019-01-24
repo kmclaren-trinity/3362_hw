@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb,verbatim, amsthm, graphicx}
+
+%exercise environment
+\newcounter{exercise}
+\setcounter{exercise}{0}
+\newenvironment{exercise}{\addtocounter{exercise}{1} \noindent{\bf{Exercise \theexercise.}}}{\vspace{.5cm}}
+
+\newcommand{\p}{\mathcal{P}}
+\newcommand{\hide}[1]{}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\B}[0]{\mathbb{B^*}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\Ps}[0]{\mathbb{P}}\newcommand{\myf}[3]{{#1}\text{: }{#2} \to {#3}}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\QED}{\hfill $\Box$}
+\renewcommand{\empty}{\varnothing}
+\newcommand{\mat}[4]{\left( \begin{array}{cc} #1 & #2 \\ #3 & #4  \end{array} \right)}
+
+\textwidth 6.5in
+\textheight 9in
+\oddsidemargin 0in
+\evensidemargin 0in
+\headsep -0.5in
+
+\setlength{\parskip}{0.25cm}
+
+\pagenumbering{gobble}
+
+\begin{document}
+
+
+\noindent{\Large{\textsc{Modern Algebra \hfill Assignment $n$  \\ Spring 2019 \hfill Kenny Mclaren}}}
+
+\large
+
+\vspace{1cm}
+
+\begin{exercise}
+Construct something from nothing.
+\end{exercise}
+
+\begin{proof}[Solution.]
+The power set of the empty set,
+\[
+\p(\empty) = \{ \empty \},
+\]
+works.
+\end{proof}
+
+
+\end{document}
